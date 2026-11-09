@@ -1,0 +1,18 @@
+# Xcode
+.DS_Store
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Local configuration / signing
+*.mobileprovision
+*.p12
+*.cer
+Secrets.xcconfig

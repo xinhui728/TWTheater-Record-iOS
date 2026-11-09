@@ -1,35 +1,55 @@
 # TWTheater Record iOS
 
-劇場日曆的 iOS / SwiftUI 版本。
+「劇場日曆」觀劇紀錄 App 的 iOS / SwiftUI 版本。
 
-> 此專案目前先在 GitHub 建立與維護，尚未經本機 Xcode、iPhone Simulator 或實體 iPhone 驗證。GitHub Actions 會負責可自動化的編譯檢查；取得 Mac 後再完成 Xcode signing、Simulator 與實機測試。
+目前先在 GitHub 建立可由 Xcode 開啟的原生 iOS 專案。因開發端尚未有 Mac，本機 Xcode、Simulator、實體 iPhone 與 signing 尚未人工驗證；GitHub Actions 會先用 macOS runner 做無簽章的 Simulator build。
 
-## 目標
+## 技術
 
-- Swift + SwiftUI
+- Swift
+- SwiftUI
+- SwiftData
+- iOS 17+
 - Local-first 私人觀劇紀錄
-- SwiftData 本機儲存
-- 與 Android 版對齊核心資料語意
-- 後續串接 Taiwan Theater Calendar API
-- 後續支援票根驗證、StoreKit、通知與備份
+- GitHub Actions / \`xcodebuild\`
 
-## 第一階段
+## 目前已完成
 
-- 觀劇紀錄
-- 想看清單
-- 待觀看
+- Xcode project / shared scheme
+- 觀劇紀錄、想看清單、待觀看
 - 新增／編輯／刪除紀錄
-- 票價、實付、其他花費
-- 0.5 星評分
-- 基本年度統計
-- 本機 SwiftData 儲存
+- 劇名、日期、時間、場館、卡司、分類、劇目
+- 座位、票面價格、實付、其他花費
+- 1～5 分、每 0.5 分一階的私人評分
+- 心得、備註、收藏
+- 基本年度／全部統計
+- SwiftData 本機持久化
+- 修改日期／時間時清除舊的精確 performance ID
+- GitHub Actions Simulator build
 
-## 開發狀態
+## 尚未實作
 
-目前尚未經實體 Mac / Xcode 驗證。取得 Mac 後：
+- Taiwan Theater Calendar 搜尋與精確場次選擇
+- 售票網址解析
+- 票根驗證／重新上傳
+- 自訂其他花費分類
+- 紀錄衝突提醒
+- Rewarded Ads / StoreKit 額度
+- 帳號與 server-authoritative quota
+- 本機通知、EventKit 行事曆
+- 備份／還原
+- 近期演出、人物關注
+- 完整 unit / UI tests
 
-1. Clone repository。
-2. 用 Xcode 開啟 `TWTheaterRecord.xcodeproj`。
-3. 在 Signing & Capabilities 選擇自己的 Apple Development Team。
-4. 先以 iPhone Simulator 執行。
-5. 再接 iPhone 做實機測試。
+詳見 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+
+## 有 Mac 後的第一次執行
+
+1. \`git clone https://github.com/xinhui728/TWTheater-Record-iOS.git\`
+2. 用 Xcode 開啟 \`TWTheaterRecord.xcodeproj\`
+3. 選擇 \`TWTheaterRecord\` target
+4. 在 **Signing & Capabilities** 選自己的 Apple Development Team
+5. 先選 iPhone Simulator 執行
+6. 再接 iPhone 做實機測試
+
+如果 Xcode 自動更新 project format 或 signing 設定，請把非個人化的 project 變更提交回 GitHub；不要提交憑證、provisioning profile 或私人 signing secret。
